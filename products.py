@@ -1,18 +1,23 @@
-# while loop适用于不知道循环几次
+# while loop适用于不知道循环几次 # 2 dimensional
 
-# 2 dimensional
+import os #operating system
 
-# read file
+# 读取档案
 products = []
-with open('products.csv','r') as f:
-    for line in f:
-        if 'product,price' in line:
-            continue # 跳到下一回的意思，并没有逃出回圈
-        name, price= line.strip().split(',')
-        #把尾巴换行去掉; use , as the split标准，遇到，就切割
-        # split切割完的结果是list
-        products.append([name,price])
-print(products)
+if os.path.isfile('products.csv'): #os.path.isfile()用来检查档案在不在
+    print('yeah!found the file!')
+    with open('products.csv','r') as f:
+        for line in f:
+            if 'product,price' in line:
+                continue # 跳到下一回的意思，并没有逃出回圈
+            name, price= line.strip().split(',')
+            #把尾巴换行去掉; use , as the split标准，遇到，就切割
+            #split切割完的结果是list
+            products.append([name,price])
+    print(products)
+    
+else:
+    print('file not found....') 
 
 # 让使用者输入
 while True:
